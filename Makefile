@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 12:36:15 by tnicolas          #+#    #+#              #
-#    Updated: 2017/11/13 21:29:41 by tnicolas         ###   ########.fr        #
+#    Updated: 2017/11/13 21:31:59 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,12 +92,5 @@ norm:
 normlib:
 	make -C $(LIBFT_DIR) norm
 	make norm
-
-normok:
-ifeq ($(shell norminette $(SRCS) $(HFILES) | grep -v "Norme:"),)
-	@echo $(GREEN)norme ok$(WHITE)
-else
-	@make norm
-endif
 
 .PHONY: all clean clean_swp fclean re open exec norm normlib normok

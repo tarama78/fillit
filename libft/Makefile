@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2017/11/13 19:19:17 by tnicolas         ###   ########.fr        #
+#    Updated: 2017/11/13 21:31:41 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,10 +99,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-normok:
-ifeq ($(shell norminette $(SRCS) $(HFILES) | grep -v "Norme:"),)
-	@echo ok
-else
-	@make norm
-endif
