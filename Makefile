@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 12:36:15 by tnicolas          #+#    #+#              #
-#    Updated: 2017/11/13 18:06:23 by tnicolas         ###   ########.fr        #
+#    Updated: 2017/11/13 18:12:46 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,9 @@ CYAN = "\x1B[36m"
 WHITE = "\x1B[37m"
 
 all:
-	@echo $(CYAN)`make -C $(LIBFT_DIR)`$(WHITE)
+	@echo $(CYAN)
+	make -C $(LIBFT_DIR)
+	@echo $(WHITE)
 	make $(NAME)
 
 $(NAME): $(OBJ)
@@ -51,19 +53,25 @@ $(OBJ_DIR)%.o:	$(SRCS_DIR)%.c
 	$(CC) $(FLAGS) -c $< -o $@ $(INC)
 
 cleanlib:
+	@echo $(CYAN)
 	make -C $(LIBFT_DIR) clean
+	@echo $(WHITE)
 
 clean: cleanlib
 	rm -rf $(OBJ)
 
 fcleanlib: cleanlib
+	@echo $(CYAN)
 	make -C $(LIBFT_DIR) fclean
+	@echo $(WHITE)
 
 fclean:	clean fcleanlib
 	rm -f $(NAME)
 
 relib: fcleanlib
+	@echo $(CYAN)
 	make -C $(LIBFT_DIR)
+	@echo $(WHITE)
 
 re: fclean all
 
