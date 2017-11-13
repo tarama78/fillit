@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 17:51:19 by tnicolas          #+#    #+#             */
-/*   Updated: 2017/11/13 20:23:12 by tnicolas         ###   ########.fr       */
+/*   Updated: 2017/11/13 22:51:01 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@
 
 # define SUCCESS 0
 # define FAILURE 1
-# define BUFF_SIZE 4 
+# define FAILURE_MSG 2
+# define BUFF_SIZE 4
 
-int			ft_verif_args(int ac);
-int			ft_readfile(char *filename, char **file_content);
 int			ft_verif(int ac, char **av, char **file_content);
 
 #endif

@@ -1,13 +1,13 @@
 # **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/11/13 12:36:15 by tnicolas          #+#    #+#              #
-#    Updated: 2017/11/13 21:31:59 by tnicolas         ###   ########.fr        #
-#                                                                              #
+#																			   #
+#														  :::	   ::::::::    #
+#	 Makefile											:+:		 :+:	:+:    #
+#													  +:+ +:+		  +:+	   #
+#	 By: tnicolas <marvin@42.fr>					+#+  +:+	   +#+		   #
+#												  +#+#+#+#+#+	+#+			   #
+#	 Created: 2017/11/13 12:36:15 by tnicolas		   #+#	  #+#			   #
+#	 Updated: 2017/11/13 21:38:00 by tnicolas		  ###	########.fr		   #
+#																			   #
 # **************************************************************************** #
 
 NAME = fillit
@@ -51,7 +51,7 @@ all:
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) -o $(NAME) $(INC) $(LIBFT_LIB) $(CFLAGS)
 
-$(OBJ_DIR)%.o:	$(SRCS_DIR)%.c
+$(OBJ_DIR)%.o:	$(SRCS_DIR)%.c $(HFILES)
 	$(CC) $(FLAGS) -c $< -o $@ $(INC)
 
 cleanlib:
@@ -93,4 +93,4 @@ normlib:
 	make -C $(LIBFT_DIR) norm
 	make norm
 
-.PHONY: all clean clean_swp fclean re open exec norm normlib normok
+.PHONY: all clean clean_swp fclean re open exec norm normlib
