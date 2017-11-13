@@ -6,13 +6,15 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 12:36:15 by tnicolas          #+#    #+#              #
-#    Updated: 2017/11/13 18:12:46 by tnicolas         ###   ########.fr        #
+#    Updated: 2017/11/13 21:29:41 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-FILES = main.c
+FILES = main.c \
+		verif.c
+
 HFILES = serge.h
 
 LIBFT_DIR = libft/
