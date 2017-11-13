@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 12:36:15 by tnicolas          #+#    #+#              #
-#    Updated: 2017/11/13 15:14:28 by tnicolas         ###   ########.fr        #
+#    Updated: 2017/11/13 17:06:49 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,11 +73,8 @@ normlib:
 	make norm
 
 normok:
-	seksek = `make norm | grep -v "Norme:"`
-	if [ $seksek" = "" ];then
-		echo "ok"
-	else
-		echo "error norm"
-	fi
+	@echo "`make norm | grep -v "Norme:"`"
+	SEKSEK="ok"
+	echo $$SEKSEK
 
 .PHONY: all clean clean_swp fclean re open exec norm normlib normok initsubmod
