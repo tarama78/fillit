@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2017/11/13 17:55:26 by tnicolas         ###   ########.fr        #
+#    Updated: 2017/11/13 19:19:17 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,9 @@ FILES = ft_strlen.c \
 		  ft_lstdel.c \
 		  ft_lstadd.c \
 		  ft_lstiter.c \
-		  ft_lstmap.c
+		  ft_lstmap.c \
+		  ft_realloc.c
+
 HFILES = libft.h
 
 CC = gcc
