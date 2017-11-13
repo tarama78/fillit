@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 12:36:17 by tnicolas          #+#    #+#             */
-/*   Updated: 2017/11/13 15:10:14 by tnicolas         ###   ########.fr       */
+/*   Created: 2017/11/07 09:59:01 by tnicolas          #+#    #+#             */
+/*   Updated: 2017/11/08 14:12:57 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int				main(int ac, char **av)
+size_t		ft_strlen(const char *s)
 {
-	(void)ac;
-	(void)av;
-	ft_putstr("ok");
-	return ( 0);
+	int		i;
+
+	i = -1;
+	while (s[++i])
+		;
+	return (i);
 }

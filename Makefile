@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 12:36:15 by tnicolas          #+#    #+#              #
-#    Updated: 2017/11/13 12:45:26 by tnicolas         ###   ########.fr        #
+#    Updated: 2017/11/13 15:14:28 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT_DIR = libft/
 LIBFT_LIB = $(LIBFT_DIR)libft.a
 
 INC_DIR = . \
-		  $(LIBFT_DIR)includes
+		  $(LIBFT_DIR)
 OBJ_DIR = ./
 SRCS_DIR = ./
 
@@ -29,35 +29,32 @@ OBJ := $(addprefix $(OBJ_DIR), $(FILES:.c=.o))
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-all :
+all:
 	make -C $(LIBFT_DIR)
 	make $(NAME)
 
-$(NAME): $(LIBFT_LIB) $(OBJ)
+$(NAME): $(OBJ)
 	$(CC) $(OBJ) -o $(NAME) $(INC) $(LIBFT_LIB) $(CFLAGS)
 
-$(LIBFT_LIB):
-	make -C $(LIBFT_DIR)
-
-$(OBJ_DIR)%.o :	$(SRC_DIR)%.c
+$(OBJ_DIR)%.o:	$(SRCS_DIR)%.c
 	$(CC) $(FLAGS) -c $< -o $@ $(INC)
-
-clean: cleanlib
-	rm -rf $(OBJ)
 
 cleanlib:
 	make -C $(LIBFT_DIR) clean
 
-fclean:	clean fcleanlib
-	rm -f $(NAME)
+clean: cleanlib
+	rm -rf $(OBJ)
 
 fcleanlib: cleanlib
 	make -C $(LIBFT_DIR) fclean
 
+fclean:	clean fcleanlib
+	rm -f $(NAME)
+
+relib: fcleanlib
+	make -C $(LIBFT_DIR)
+
 re: fclean all
-
-relib: fcleanlib $(LIBFT_LIB)
-
 
 open:
 	@vim +12 *.[ch] Makefile `find ~ -iname ".vimrc" \
@@ -69,17 +66,18 @@ exec:
 	@./$(NAME)
 
 norm:
-	@norminette $(SRCS) $(INC_DIR)/*
+	@norminette $(SRCS)
 
 normlib:
 	make -C $(LIBFT_DIR) norm
 	make norm
 
 normok:
-	@make norm | grep -v "Norme:"
-
-initsubmod:
-	git submodule init
-	git submodule update
+	seksek = `make norm | grep -v "Norme:"`
+	if [ $seksek" = "" ];then
+		echo "ok"
+	else
+		echo "error norm"
+	fi
 
 .PHONY: all clean clean_swp fclean re open exec norm normlib normok initsubmod

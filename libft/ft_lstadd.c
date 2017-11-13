@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 12:36:17 by tnicolas          #+#    #+#             */
-/*   Updated: 2017/11/13 15:10:14 by tnicolas         ###   ########.fr       */
+/*   Created: 2017/11/08 11:21:38 by tnicolas          #+#    #+#             */
+/*   Updated: 2017/11/08 14:58:14 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int				main(int ac, char **av)
+void		ft_lstadd(t_list **alst, t_list *new)
 {
-	(void)ac;
-	(void)av;
-	ft_putstr("ok");
-	return ( 0);
+	new->next = *alst;
+	*alst = new;
 }

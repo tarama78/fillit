@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 12:36:17 by tnicolas          #+#    #+#             */
-/*   Updated: 2017/11/13 15:10:14 by tnicolas         ###   ########.fr       */
+/*   Created: 2017/11/07 09:59:44 by tnicolas          #+#    #+#             */
+/*   Updated: 2017/11/09 10:18:28 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <libft.h>
 
-int				main(int ac, char **av)
+char		*ft_strnew(size_t size)
 {
-	(void)ac;
-	(void)av;
-	ft_putstr("ok");
-	return ( 0);
+	char	*ret;
+
+	if (!(ret = (char*)malloc(size + 1)))
+		return (NULL);
+	while (size > 0)
+		ret[size--] = 0;
+	ret[0] = 0;
+	return (ret);
 }

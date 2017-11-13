@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 12:36:17 by tnicolas          #+#    #+#             */
-/*   Updated: 2017/11/13 15:10:14 by tnicolas         ###   ########.fr       */
+/*   Created: 2017/11/07 09:48:06 by tnicolas          #+#    #+#             */
+/*   Updated: 2017/11/08 14:02:06 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <unistd.h>
 
-int				main(int ac, char **av)
+void		ft_putchar(char c)
 {
-	(void)ac;
-	(void)av;
-	ft_putstr("ok");
-	return ( 0);
+	write(STDOUT_FILENO, &c, sizeof(c));
 }
