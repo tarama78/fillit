@@ -6,13 +6,14 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 12:36:15 by tnicolas          #+#    #+#              #
-#    Updated: 2017/11/13 17:06:49 by tnicolas         ###   ########.fr        #
+#    Updated: 2017/11/13 18:06:23 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
 FILES = main.c
+HFILES = serge.h
 
 LIBFT_DIR = libft/
 LIBFT_LIB = $(LIBFT_DIR)libft.a
@@ -29,8 +30,18 @@ OBJ := $(addprefix $(OBJ_DIR), $(FILES:.c=.o))
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
+
+NORMAL = "\x1B[0m"
+RED = "\x1B[31m"
+GREEN = "\x1B[32m"
+YELLOW = "\x1B[33m"
+BLUE = "\x1B[34m"
+MAGENTA = "\x1B[35m"
+CYAN = "\x1B[36m"
+WHITE = "\x1B[37m"
+
 all:
-	make -C $(LIBFT_DIR)
+	@echo $(CYAN)`make -C $(LIBFT_DIR)`$(WHITE)
 	make $(NAME)
 
 $(NAME): $(OBJ)
@@ -66,15 +77,17 @@ exec:
 	@./$(NAME)
 
 norm:
-	@norminette $(SRCS)
+	@norminette $(SRCS) $(HFILES)
 
 normlib:
 	make -C $(LIBFT_DIR) norm
 	make norm
 
 normok:
-	@echo "`make norm | grep -v "Norme:"`"
-	SEKSEK="ok"
-	echo $$SEKSEK
+ifeq ($(shell norminette $(SRCS) $(HFILES) | grep -v "Norme:"),)
+	@echo $(GREEN)norme ok$(WHITE)
+else
+	@make norm
+endif
 
-.PHONY: all clean clean_swp fclean re open exec norm normlib normok initsubmod
+.PHONY: all clean clean_swp fclean re open exec norm normlib normok

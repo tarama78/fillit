@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2017/11/10 14:47:08 by tnicolas         ###   ########.fr        #
+#    Updated: 2017/11/13 17:55:26 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ FILES = ft_strlen.c \
 		  ft_lstadd.c \
 		  ft_lstiter.c \
 		  ft_lstmap.c
+HFILES = libft.h
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -96,3 +97,10 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+normok:
+ifeq ($(shell norminette $(SRCS) $(HFILES) | grep -v "Norme:"),)
+	@echo ok
+else
+	@make norm
+endif
