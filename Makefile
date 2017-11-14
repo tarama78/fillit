@@ -10,15 +10,17 @@
 #																			   #
 # **************************************************************************** #
 
-NB_GENE = 5
+NB_GENE = 4
 
 NAME = fillit
 
 FILES = main.c \
 		verif.c \
-		verif_annexe.c
+		verif_annexe.c \
+		fillit.c
 
-HFILES = serge.h
+HFILES = serge.h \
+		 structure.h
 
 LIBFT_DIR = libft/
 LIBFT_LIB = $(LIBFT_DIR)libft.a

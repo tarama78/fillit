@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   serge.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 17:51:19 by tnicolas          #+#    #+#             */
-/*   Updated: 2017/11/14 19:03:27 by tnicolas         ###   ########.fr       */
-/*                                                                            */
+/*																			  */
+/*														  :::	   ::::::::   */
+/*	 serge.h											:+:		 :+:	:+:   */
+/*													  +:+ +:+		  +:+	  */
+/*	 By: tnicolas <marvin@42.fr>					+#+  +:+	   +#+		  */
+/*												  +#+#+#+#+#+	+#+			  */
+/*	 Created: 2017/11/13 17:51:19 by tnicolas		   #+#	  #+#			  */
+/*	 Updated: 2017/11/14 19:36:49 by tnicolas		  ###	########.fr		  */
+/*																			  */
 /* ************************************************************************** */
 
 #ifndef SERGE_H
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft/libft.h"
+# include <structure.h>
 
 # define SUCCESS 0
 # define FAILURE 1
@@ -36,5 +37,6 @@ int			ft_read_file(char *filename, char **file_content);
 int			ft_verif_file(char *str);
 int			ft_verif(int ac, char **av, char **file_content);
 int			ft_verif(int ac, char **av, char **file_content);
+void		ft_fillit(char *str);
 
 #endif

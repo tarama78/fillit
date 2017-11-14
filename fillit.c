@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 12:36:17 by tnicolas          #+#    #+#             */
-/*   Updated: 2017/11/14 20:24:42 by tnicolas         ###   ########.fr       */
+/*   Created: 2017/11/14 20:20:54 by tnicolas          #+#    #+#             */
+/*   Updated: 2017/11/14 20:23:51 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include <serge.h>
 
-int				main(int ac, char **av)
+void		ft_fillit(char *str)
 {
-	char		*file_content;
-	int			ret;
+	t_tetris	*t;
 
-	ret = ft_verif(ac, av, &file_content);
-	if (ret == FAILURE)
-		return (EXIT_FAILURE);
-	else if (ret == FAILURE_MSG)
-	{
-		ft_putstr("error\n");
-		return (EXIT_FAILURE);
-	}
-	ft_fillit(file_content);
-	return (EXIT_SUCCESS);
 }
