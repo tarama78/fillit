@@ -10,10 +10,13 @@
 #																			   #
 # **************************************************************************** #
 
+NB_GENE = 5
+
 NAME = fillit
 
 FILES = main.c \
-		verif.c
+		verif.c \
+		verif_annexe.c
 
 HFILES = serge.h
 
@@ -31,7 +34,6 @@ OBJ := $(addprefix $(OBJ_DIR), $(FILES:.c=.o))
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-
 
 NORMAL = "\x1B[0m"
 RED = "\x1B[31m"
@@ -83,12 +85,7 @@ open:
 
 exec:
 	@clear
-	@make all
-	@./$(NAME)
-
-normal:
-	@clear
-	@./gene ${size_gene}
+	@./gene $(NB_GENE)
 	@echo "----- file -----"
 	@cat map.fillit
 	@echo "----- file -----"
