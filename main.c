@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 12:36:17 by tnicolas          #+#    #+#             */
-/*   Updated: 2017/11/13 21:46:36 by tnicolas         ###   ########.fr       */
+/*   Updated: 2017/11/14 16:21:33 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int				main(int ac, char **av)
 		ft_putstr("error\n");
 		return (EXIT_FAILURE);
 	}
-	ft_putstr(file_content);
+	//ft_putstr(file_content);//
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 17:51:19 by tnicolas          #+#    #+#             */
-/*   Updated: 2017/11/13 22:51:01 by tnicolas         ###   ########.fr       */
+/*   Updated: 2017/11/14 16:28:26 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define FAILURE 1
 # define FAILURE_MSG 2
 # define BUFF_SIZE 4
+# define SIZE_MAX_FILE 545
 
 int			ft_verif(int ac, char **av, char **file_content);
 

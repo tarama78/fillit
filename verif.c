@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			  */
-/*														  :::	   ::::::::   */
-/*	 verif.c											:+:		 :+:	:+:   */
-/*													  +:+ +:+		  +:+	  */
-/*	 By: tnicolas <marvin@42.fr>					+#+  +:+	   +#+		  */
-/*												  +#+#+#+#+#+	+#+			  */
-/*	 Created: 2017/11/13 18:49:10 by tnicolas		   #+#	  #+#			  */
-/*	 Updated: 2017/11/13 21:52:05 by tnicolas		  ###	########.fr		  */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   verif.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/14 14:42:11 by tnicolas          #+#    #+#             */
+/*   Updated: 2017/11/14 16:30:56 by tnicolas         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
@@ -70,6 +70,19 @@ int			ft_verif_nb(char *str)
 	return (SUCCESS);
 }
 
+int			ft_verif_form(char *str, int x, int y, int check)
+{
+	if (check == 3)
+		return (SUCCESS);
+	if (y < 3 && str[x * 5 + y + 1] == '#')
+		return (ft_verif_form(str, x, y + 1, check + 1));
+	if (y > 0 && str[x * 5 + y - 1] == '#')
+		return (ft_verif_form(str, x, y - 1, check + 1));
+	if (x < 3 && str[(x + 1) * 5 + y] == '#')
+		return (ft_verif_form(str, x + 1, y, check + 1));
+	return (FAILURE);
+}
+
 int			ft_verif_tetris(char *str)
 {
 	int		i;
@@ -81,9 +94,15 @@ int			ft_verif_tetris(char *str)
 		j = -1;
 		while (++j < 4)
 		{
+			if (str[i * 5 + j] == '#')
+			{
+				if (ft_verif_form(str, i, j, 0) == FAILURE)
+					return (FAILURE);
+				return (SUCCESS);
+			}
 		}
 	}
-	return (SUCCESS);
+	return (FAILURE);
 }
 
 int			ft_verif_format(char *str)
@@ -103,10 +122,10 @@ int			ft_verif_format(char *str)
 			if (*str++ != '\n' && *str != '\0')
 				return (FAILURE);
 		}
-		if (ft_verif_nb(str - 21))
+		if (ft_verif_nb(str - 20) == FAILURE)
 			return (FAILURE);
-		//if (ft_verif_tetris(str - 19))
-		//	return (FAILURE);
+		if (ft_verif_tetris(str - 20) == FAILURE)
+			return (FAILURE);
 		if (*str == '\0')
 			return (SUCCESS);
 		else if (*str++ != '\n')
@@ -117,6 +136,8 @@ int			ft_verif_format(char *str)
 
 int			ft_verif_file(char *str)
 {
+	if (ft_strlen(str) > SIZE_MAX_FILE)
+		return (FAILURE);
 	if (ft_verif_char(str) == FAILURE)
 		return (FAILURE);
 	if (ft_verif_format(str) == FAILURE)

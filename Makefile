@@ -86,6 +86,15 @@ exec:
 	@make all
 	@./$(NAME)
 
+normal:
+	@clear
+	@./gene ${size_gene}
+	@echo "----- file -----"
+	@cat map.fillit
+	@echo "----- file -----"
+	@make
+	@./fillit map.fillit
+
 norm:
 	@norminette $(SRCS) $(HFILES)
 
