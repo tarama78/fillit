@@ -10,14 +10,15 @@
 #																			   #
 # **************************************************************************** #
 
-NB_GENE = 4
+NB_GENE = 5
 
 NAME = fillit
 
 FILES = main.c \
 		verif.c \
 		verif_annexe.c \
-		fillit.c
+		fillit.c \
+		algo.c
 
 HFILES = serge.h \
 		 structure.h
@@ -69,7 +70,7 @@ cleanlib:
 
 clean: cleanlib
 	@printf $(GREEN)"FILLIT:\n--------------------\n"$(WHITE)
-	@printf $(MAGENTA)"-x remove .o files\n"$(WHITE)
+	@printf $(RED)"-x remove .o files\n"$(WHITE)
 	@printf $(GREEN)"--------------------\n\n"$(WHITE)
 	@rm -rf $(OBJ)
 
@@ -80,7 +81,7 @@ fcleanlib:
 
 fclean:	clean fcleanlib
 	@printf $(GREEN)"FILLIT:\n--------------------\n"$(WHITE)
-	@printf $(MAGENTA)"-x remove $(NAME)\n"$(WHITE)
+	@printf $(RED)"-x remove $(NAME)\n"$(WHITE)
 	@printf $(GREEN)"--------------------\n\n"$(WHITE)
 	@rm -f $(NAME)
 
@@ -97,12 +98,14 @@ open:
 
 exec:
 	@clear
-	@./gene $(NB_GENE)
-	@printf $(GREEN)"----- file -----"$(WHITE)
-	@cat map.fillit
-	@printf $(GREEN)"----- file -----"$(WHITE)
 	@make
+	@./gene $(NB_GENE)
+	@printf $(MAGENTA)"FILE:\n--------------------\n"$(WHITE)
+	@cat map.fillit
+	@printf $(MAGENTA)"--------------------\n\n"$(WHITE)
+	@printf $(MAGENTA)"FILLIT:\n--------------------\n"$(WHITE)
 	@./fillit map.fillit
+	@printf $(MAGENTA)"--------------------\n\n"$(WHITE)
 
 norm:
 	@printf $(BLUE)"NORME FILLIT\n"$(WHITE)

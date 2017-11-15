@@ -6,11 +6,10 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 12:36:17 by tnicolas          #+#    #+#             */
-/*   Updated: 2017/11/14 20:24:42 by tnicolas         ###   ########.fr       */
+/*   Updated: 2017/11/15 11:27:15 by pmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include <serge.h>
 
 int				main(int ac, char **av)

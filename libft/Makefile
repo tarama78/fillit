@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2017/11/15 10:49:45 by tnicolas         ###   ########.fr        #
+#    Updated: 2017/11/15 14:58:55 by pmilan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,15 +113,15 @@ $(OBJ_DIR):
 	@mkdir -p $(dir $(OBJ))
 
 clean:
-	@printf $(MAGENTA)"-x remove .o files\n"$(WHITE)
+	@printf $(RED)"-x remove .o files\n"$(WHITE)
 	@rm -f $(OBJ)
 
 clean_name:
-	@printf $(MAGENTA)"-x remove $(NAME)\n"$(WHITE)
+	@printf $(RED)"-x remove $(NAME)\n"$(WHITE)
 	@rm -f $(NAME)
 
 fclean: clean
-	@printf $(MAGENTA)"-x remove $(NAME)\n"$(WHITE)
+	@printf $(RED)"-x remove $(NAME)\n"$(WHITE)
 	@rm -f $(NAME)
 
 re: fclean all

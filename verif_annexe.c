@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 18:58:00 by tnicolas          #+#    #+#             */
-/*   Updated: 2017/11/14 19:03:10 by tnicolas         ###   ########.fr       */
+/*   Updated: 2017/11/15 18:48:00 by pmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,29 @@ int			ft_verif_nb(char *str)
 	return (SUCCESS);
 }
 
-int			ft_verif_form(char *str, int x, int y, int check)
+int			ft_verif_form(char *str, int x, int y)
 {
-	if (check == 3)
-		return (SUCCESS);
+	int jnct;
+
+	jnct = 0;
 	if (y < 3 && str[x * 5 + y + 1] == '#')
-		return (ft_verif_form(str, x, y + 1, check + 1));
+		jnct++;
 	if (y > 0 && str[x * 5 + y - 1] == '#')
-		return (ft_verif_form(str, x, y - 1, check + 1));
+		jnct++;
 	if (x < 3 && str[(x + 1) * 5 + y] == '#')
-		return (ft_verif_form(str, x + 1, y, check + 1));
-	return (FAILURE);
+		jnct++;
+	if (x > 0 && str[(x - 1) * 5 + y] == '#')
+		jnct++;
+	return (jnct);
 }
 
 int			ft_verif_tetris(char *str)
 {
 	int		i;
 	int		j;
+	int		jnct;
 
+	jnct = 0;
 	i = -1;
 	while (++i < 4)
 	{
@@ -65,13 +70,11 @@ int			ft_verif_tetris(char *str)
 		while (++j < 4)
 		{
 			if (str[i * 5 + j] == '#')
-			{
-				if (ft_verif_form(str, i, j, 0) == FAILURE)
-					return (FAILURE);
-				return (SUCCESS);
-			}
+				jnct += ft_verif_form(str, i, j);
 		}
 	}
+	if (jnct == 6 || jnct == 8)
+		return (SUCCESS);
 	return (FAILURE);
 }
 
