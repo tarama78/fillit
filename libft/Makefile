@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2017/11/13 21:39:03 by tnicolas         ###   ########.fr        #
+#    Updated: 2017/11/15 10:49:45 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,28 +74,70 @@ FILES = ft_strlen.c \
 		  ft_lstmap.c \
 		  ft_realloc.c
 
+
 HFILES = libft.h
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
+INC_DIR = ./
+SRCS_DIR = ./
+OBJ_DIR = ./
+
 INC := $(addprefix -I , $(INC_DIR))
-SRCS := $(addprefix ./, $(FILES))
-OBJ := $(addprefix ./, $(FILES:.c=.o))
+SRCS := $(addprefix $(SRCS_DIR), $(FILES))
+OBJ := $(addprefix $(OBJ_DIR), $(FILES:.c=.o))
+
+NORMAL = "\x1B[0m"
+RED = "\x1B[31m"
+GREEN = "\x1B[32m"
+YELLOW = "\x1B[33m"
+BLUE = "\x1B[34m"
+MAGENTA = "\x1B[35m"
+CYAN = "\x1B[36m"
+WHITE = "\x1B[37m"
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+$(NAME): $(OBJ_DIR) $(OBJ)
+	@printf $(CYAN)"-> create lib\n"$(WHITE)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
-%.o: %.c $(HFIlES)
-	$(CC) -c $(INC) $< -o $@ $(CFLAGS)
+$(OBJ_DIR)%.o: $(SRCS_DIR)%.c $(HFILES)
+	@printf $(YELLOW)"-> $<\n"$(WHITE)
+	@$(CC) -c $(INC) $< -o $@ $(CFLAGS)
+
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(dir $(OBJ))
 
 clean:
-	rm -f $(OBJ)
+	@printf $(MAGENTA)"-x remove .o files\n"$(WHITE)
+	@rm -f $(OBJ)
+
+clean_name:
+	@printf $(MAGENTA)"-x remove $(NAME)\n"$(WHITE)
+	@rm -f $(NAME)
 
 fclean: clean
-	rm -f $(NAME)
+	@printf $(MAGENTA)"-x remove $(NAME)\n"$(WHITE)
+	@rm -f $(NAME)
 
 re: fclean all
+
+open:
+	@vim +12 `find . -iname "*.c" -o -iname "*.h" -o -iname "*.txt" \
+		-o -iname "Makefile" -o -iname ".gitignore"` `find ~ -iname ".vimrc" \
+	   -o -iname ".vim/vim_help_file"`
+
+exec: all
+	@clear
+	@$(CC) main.c -o libft_test $(INC) -L . $(CFLAGS) -lft
+	@./libft_test
+
+norm:
+	@printf $(BLUE)"NORME LIBFT\n"$(WHITE)
+	@norminette $(SRCS) $(HFILES)
+
+.PHONY: all clean clean_swp fclean re open exec norm

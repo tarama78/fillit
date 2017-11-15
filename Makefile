@@ -47,37 +47,47 @@ CYAN = "\x1B[36m"
 WHITE = "\x1B[37m"
 
 all:
-	@echo $(CYAN)
-	make -C $(LIBFT_DIR)
-	@echo $(WHITE)
-	make $(NAME)
+	@printf $(GREEN)"LIBFT:\n--------------------\n"$(WHITE)
+	@make -C $(LIBFT_DIR)
+	@printf $(GREEN)"--------------------\n\n"$(WHITE)
+	@printf $(GREEN)"FILLIT:\n--------------------\n"$(WHITE)
+	@make $(NAME)
+	@printf $(GREEN)"--------------------\n"$(WHITE)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME) $(INC) $(LIBFT_LIB) $(CFLAGS)
+	@printf $(CYAN)"-> create fillit\n"$(WHITE)
+	@$(CC) $(OBJ) -o $(NAME) $(INC) $(LIBFT_LIB) $(CFLAGS)
 
 $(OBJ_DIR)%.o:	$(SRCS_DIR)%.c $(HFILES)
-	$(CC) $(FLAGS) -c $< -o $@ $(INC)
+	@printf $(YELLOW)"-> $<\n"$(WHITE)
+	@$(CC) $(FLAGS) -c $< -o $@ $(INC)
 
 cleanlib:
-	@echo $(CYAN)
-	make -C $(LIBFT_DIR) clean
-	@echo $(WHITE)
+	@printf $(GREEN)"LIBFT:\n--------------------\n"$(WHITE)
+	@make -C $(LIBFT_DIR) clean
+	@printf $(GREEN)"--------------------\n\n"$(WHITE)
 
 clean: cleanlib
-	rm -rf $(OBJ)
+	@printf $(GREEN)"FILLIT:\n--------------------\n"$(WHITE)
+	@printf $(MAGENTA)"-x remove .o files\n"$(WHITE)
+	@printf $(GREEN)"--------------------\n\n"$(WHITE)
+	@rm -rf $(OBJ)
 
-fcleanlib: cleanlib
-	@echo $(CYAN)
-	make -C $(LIBFT_DIR) fclean
-	@echo $(WHITE)
+fcleanlib:
+	@printf $(GREEN)"LIBFT:\n--------------------\n"$(WHITE)
+	@make -C $(LIBFT_DIR) clean_name
+	@printf $(GREEN)"--------------------\n\n"$(WHITE)
 
 fclean:	clean fcleanlib
-	rm -f $(NAME)
+	@printf $(GREEN)"FILLIT:\n--------------------\n"$(WHITE)
+	@printf $(MAGENTA)"-x remove $(NAME)\n"$(WHITE)
+	@printf $(GREEN)"--------------------\n\n"$(WHITE)
+	@rm -f $(NAME)
 
 relib: fcleanlib
-	@echo $(CYAN)
-	make -C $(LIBFT_DIR)
-	@echo $(WHITE)
+	@printf $(GREEN)"LIBFT:\n--------------------\n"$(WHITE)
+	@make -C $(LIBFT_DIR)
+	@printf $(GREEN)"--------------------\n\n"$(WHITE)
 
 re: fclean all
 
@@ -88,17 +98,18 @@ open:
 exec:
 	@clear
 	@./gene $(NB_GENE)
-	@echo "----- file -----"
+	@printf $(GREEN)"----- file -----"$(WHITE)
 	@cat map.fillit
-	@echo "----- file -----"
+	@printf $(GREEN)"----- file -----"$(WHITE)
 	@make
 	@./fillit map.fillit
 
 norm:
+	@printf $(BLUE)"NORME FILLIT\n"$(WHITE)
 	@norminette $(SRCS) $(HFILES)
 
 normlib:
-	make -C $(LIBFT_DIR) norm
-	make norm
+	@make -C $(LIBFT_DIR) norm
+	@make norm
 
 .PHONY: all clean clean_swp fclean re open exec norm normlib

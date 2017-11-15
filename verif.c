@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 14:42:11 by tnicolas          #+#    #+#             */
-/*   Updated: 2017/11/14 19:22:16 by tnicolas         ###   ########.fr       */
+/*   Updated: 2017/11/15 09:42:50 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int			ft_read_file(char *filename, char **file_content)
 				ft_strlen(*file_content) + ret_read + 1);
 		ft_strncat(*file_content, buf, ret_read);
 	}
+	close(fd);
 	return (SUCCESS);
 }
 
