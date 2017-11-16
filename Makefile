@@ -10,7 +10,7 @@
 #																			   #
 # **************************************************************************** #
 
-NB_GENE = 4
+NB_GENE = 12
 
 NAME = fillit
 
@@ -55,7 +55,7 @@ all:
 	@printf $(GREEN)"--------------------\n\n"$(WHITE)
 	@printf $(GREEN)"FILLIT:\n--------------------\n"$(WHITE)
 	@make $(NAME)
-	@printf $(GREEN)"--------------------\n"$(WHITE)
+	@printf $(GREEN)"--------------------\n\n"$(WHITE)
 
 $(NAME): $(OBJ)
 	@printf $(CYAN)"-> create fillit\n"$(WHITE)
