@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:29:43 by tnicolas          #+#    #+#             */
-/*   Updated: 2017/11/16 17:58:02 by tnicolas         ###   ########.fr       */
+/*   Updated: 2017/11/16 20:10:08 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,43 @@ int			ft_put_top_left(t_tetris **t, int *tab, int count, int size)
 	return (FAILURE);
 }
 
+void		ft_print_color(int *tab, int size)
+{
+	int		i;
+	int		j;
+
+	j = -1;
+	while (++j < size + 2)
+		printf("\x1b[47m\x1b[47m  "NORMAL);
+	printf("\n");
+	i = -1;
+	while (++i < size)
+	{
+		printf("\x1b[47m\x1b[47m  "NORMAL);
+		j = -1;
+		while (++j < size)
+		{
+			if (tab[i * size + j] == -1)
+				printf("  ");
+			else
+			{
+				printf("\x1b[%dm\x1b[%dm%c%c"NORMAL, tab[i * size + j] % 6 + 31,
+						tab[i * size + j] % 6 + 41,
+						tab[i * size + j] + 'A',
+						tab[i * size + j] + 'A');//
+				fflush(stdout);
+			}
+		}
+		printf("\x1b[47m\x1b[47m  "NORMAL);
+		fflush(stdout);
+		printf("\n");
+	}
+	j = -1;
+	while (++j < size + 2)
+		printf("\x1b[47m\x1b[47m  "NORMAL);
+	printf("\n");
+}
+
 void		ft_print(int *tab, int size)
 {
 	int		i;
@@ -79,10 +116,7 @@ void		ft_print(int *tab, int size)
 				ft_putchar('.');
 			else
 			{
-				printf("\x1b[%dm%c"NORMAL, tab[i * size + j] % 6 + 31,
-						tab[i * size + j] + 'A');///////////////////////////////
-				fflush(stdout);/////////////////////////////////////////////////
-				//ft_putchar(tab[i * size + j] + 'A');
+				ft_putchar(tab[i * size + j] + 'A');
 			}
 		}
 		ft_putchar('\n');
@@ -92,16 +126,21 @@ void		ft_print(int *tab, int size)
 void		ft_rekt_form(t_tetris **t, int *tab, int count, int size)
 {
 	int		i;
+	int		j;
 	int		sq;
 
 	if (count < 0)
 		return ;
-	i = -1;
+	i = (t[count])->x - 1;
 	sq = size * size;
-	while (++i < sq)
+	while (++i < 4 + (t[count])->x)
 	{
-		if (tab[i] == count)
-			tab[i] = -1;
+		j = (t[count])->y - 1;
+		while (++j < 4 + (t[count])->y)
+		{
+			if (i * size + j < sq && tab[i * size + j] == count)
+				tab[i * size + j] = -1;
+		}
 	}
 	if ((t[count])->y == size - 1)
 	{
@@ -136,6 +175,6 @@ void		ft_resolve(t_tetris **t)
 				break ;
 		}
 	}
-	ft_print(tab, size);
+	ft_print_color(tab, size);
 	free(tab);
 }
