@@ -112,7 +112,12 @@ void		ft_print(int *tab, int size)
 			if (tab[i * size + j] == -1)
 				ft_putchar('.');
 			else
-				ft_putchar(tab[i * size + j] + 'A');
+			{
+				printf("\x1b[%dm%c"NORMAL, tab[i * size + j] % 6 + 31,
+						tab[i * size + j] + 'A');///////////////////////////////
+				fflush(stdout);/////////////////////////////////////////////////
+				//ft_putchar(tab[i * size + j] + 'A');
+			}
 		}
 		ft_putchar('\n');
 	}
