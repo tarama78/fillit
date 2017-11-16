@@ -10,7 +10,7 @@
 #																			   #
 # **************************************************************************** #
 
-NB_GENE = 26
+NB_GENE = 12
 
 NAME = fillit
 
@@ -104,7 +104,7 @@ exec:
 	@cat map.fillit
 	@printf $(MAGENTA)"--------------------\n\n"$(WHITE)
 	@printf $(MAGENTA)"FILLIT:\n--------------------\n"$(WHITE)
-	@./fillit map.fillit
+	@time ./fillit map.fillit
 	@printf $(MAGENTA)"--------------------\n\n"$(WHITE)
 
 norm:
