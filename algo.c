@@ -36,6 +36,7 @@ int			ft_init_tab(int **tab, int size)
 {
 	int i;
 
+	free(*tab);
 	i = size * size;
 	if (!(*tab = (int *)malloc(sizeof(**tab) * i)))
 		return (FAILURE);
@@ -81,7 +82,7 @@ int			ft_put_top_left(t_tetris **t, int *tab, int count, int size)
 	int last_x;
 
 	last_x = (t[count])->x;
-	i = last_x - 1;
+	i = (last_x == -1) ? -1 : last_x - 1;
 	while (++i < size)
 	{
 		j = (i == last_x) ? (t[count])->y - 1 : -1;
@@ -121,20 +122,39 @@ void		ft_print(int *tab, int size)
 		}
 		ft_putchar('\n');
 	}
+	printf("\n");///////////////////////////////////////////////////////////////
 }
 
-void		ft_rekt_form(int *tab, int count, int size)
+void		ft_rekt_form(t_tetris **t, int *tab, int count, int size)
 {
 	int i;
 	int sq;
 
 	i = -1;
 	sq = size * size;
-	printf("%d\n", count);
 	while (++i < sq)
 	{
 		if (tab[i] == count)
 			tab[i] = -1;
+	}
+	if ((t[count])->y == size - 1)
+	{
+		(t[count])->x++;
+		(t[count])->y = 0;
+	}
+	else
+		(t[count])->y++;
+}
+
+void		ft_reset(t_tetris **t)
+{
+	int		i;
+
+	i = -1;
+	while (++i < (t[0])->nb_form)
+	{
+		(t[i])->x = -1;
+		(t[i])->y = -1;
 	}
 }
 
@@ -144,23 +164,42 @@ void		ft_resolve(t_tetris **t)
 	int *tab;
 	int count;
 
-	size = ft_size_min_square(t);
-	if (ft_init_tab(&tab, size) == FAILURE)
-		return ;
+	tab = NULL;
 	count = 0;
+	size = ft_size_min_square(t);
 	while (count < (t[0])->nb_form)
 	{
-		if (ft_put_top_left(t, tab, count, size) == SUCCESS)
-			count++;
-		else
-			ft_rekt_form(tab, --count, size);
-		if (count < 0)
+		ft_reset(t);
+		if (ft_init_tab(&tab, size) == FAILURE)
+			return ;
+		count = 0;
+		while (count < (t[0])->nb_form)
 		{
-			//size++;
-			break;
+			if (ft_put_top_left(t, tab, count, size) == SUCCESS)
+				count++;
+			else
+			{
+				//ft_print(tab, size);
+				if (count <= 0)
+				{
+					size++;
+					break;
+				}
+				ft_rekt_form(t, tab, --count, size);
+			}
+			if (count < 0)
+			{
+				size++;
+				break;
+			}
 		}
 	}
-	if (count == size)
+	if (count == (t[0])->nb_form)
+	{
+	int l = -1;////////////////////
 		ft_putstr("OK\n");
+		while (++l < (t[0])->nb_form)
+			printf("%c\n\tx -> %d\n\ty-> %d\n", l + 'A', (t[l])->x, (t[l])->y);
+	}
 	ft_print(tab, size);
 }
