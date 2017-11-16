@@ -63,7 +63,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)%.o:	$(SRCS_DIR)%.c $(HFILES)
 	@printf $(YELLOW)"-> $<\n"$(WHITE)
-	@$(CC) $(FLAGS) -c $< -o $@ $(INC)
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 cleanlib:
 	@printf $(GREEN)"LIBFT:\n--------------------\n"$(WHITE)

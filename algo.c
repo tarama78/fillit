@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:29:43 by tnicolas          #+#    #+#             */
-/*   Updated: 2017/11/16 14:30:56 by tnicolas         ###   ########.fr       */
+/*   Updated: 2017/11/16 14:50:56 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,4 +137,5 @@ void		ft_resolve(t_tetris **t)
 		}
 	}
 	ft_print(tab, size);
+	free(tab);
 }

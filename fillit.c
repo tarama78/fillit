@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:42:36 by tnicolas          #+#    #+#             */
-/*   Updated: 2017/11/16 14:42:37 by tnicolas         ###   ########.fr       */
+/*   Updated: 2017/11/16 14:53:41 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,10 @@ t_tetris	**ft_create_tetris(char *str)
 
 	nb_form = ft_count_form(str);
 	if (!(t = (t_tetris**)malloc(sizeof(*t) * nb_form)))
-		return (NULL);
+		exit(EXIT_FAILURE);
 	i = -1;
 	while (++i < nb_form)
-	{
-		if (!(t[i] = ft_init_struct(str + 21 * i, nb_form)))
-			return (NULL);
-	}
+		t[i] = ft_init_struct(str + 21 * i, nb_form);
 	return (t);
 }
 

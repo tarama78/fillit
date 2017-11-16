@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:42:51 by tnicolas          #+#    #+#             */
-/*   Updated: 2017/11/16 14:42:54 by tnicolas         ###   ########.fr       */
+/*   Updated: 2017/11/16 14:53:51 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_tetris	*ft_init_struct(char *str, int nb_form)
 	int			j;
 
 	if (!(t = (t_tetris*)malloc(sizeof(*t))))
-		return (NULL);
+		exit(EXIT_FAILURE);
 	t->nb_form = nb_form;
 	t->x = -1;
 	t->y = -1;

@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 14:42:11 by tnicolas          #+#    #+#             */
-/*   Updated: 2017/11/15 18:48:10 by pmilan           ###   ########.fr       */
+/*   Updated: 2017/11/16 14:54:28 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			ft_read_file(char *filename, char **file_content)
 	if ((fd = open(filename, O_RDONLY)) == -1)
 		return (FAILURE);
 	if (!(*file_content = malloc(sizeof(**file_content))))
-		return (FAILURE);
+		exit(EXIT_FAILURE);
 	(*file_content)[0] = '\0';
 	while ((ret_read = read(fd, buf, BUFF_SIZE)) > 0)
 	{
