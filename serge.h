@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			  */
-/*														  :::	   ::::::::   */
-/*	 serge.h											:+:		 :+:	:+:   */
-/*													  +:+ +:+		  +:+	  */
-/*	 By: tnicolas <marvin@42.fr>					+#+  +:+	   +#+		  */
-/*												  +#+#+#+#+#+	+#+			  */
-/*	 Created: 2017/11/13 17:51:19 by tnicolas		   #+#	  #+#			  */
-/*	 Updated: 2017/11/14 19:36:49 by tnicolas		  ###	########.fr		  */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   serge.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/16 14:16:38 by tnicolas          #+#    #+#             */
+/*   Updated: 2017/11/16 14:43:08 by tnicolas         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SERGE_H
@@ -20,8 +20,7 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 # include <structure.h>
-#include <stdio.h>//////////////////////////////////////////////////////////////
-
+# include <stdio.h>/////////////////////////////////////////////////////////////
 
 # define NORMAL	"\x1B[0m"
 # define RED  "\x1B[31m"
@@ -56,6 +55,14 @@ t_tetris	*ft_init_struct(char *str, int nb_form);
 t_tetris	**ft_create_tetris(char *str);
 void		ft_fruit(t_tetris **t);
 void		ft_fillit(char *str);
+int			ft_int_sqrt(int n);
+int			ft_size_min_square(t_tetris **t);
+int			ft_init_tab(int **tab, int size);
+void		ft_reset(t_tetris **t, int *count);
+int			ft_int_sqrt(int n);
+int			ft_is_possible(t_tetris **t, int *tab, int count, int size);
+int			ft_put_top_left(t_tetris **t, int *tab, int count, int size);
+void		ft_print(int *tab, int size);
 void		ft_resolve(t_tetris **t);
 
 #endif

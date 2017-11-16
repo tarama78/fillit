@@ -10,7 +10,7 @@
 #																			   #
 # **************************************************************************** #
 
-NB_GENE = 12
+NB_GENE = 4
 
 NAME = fillit
 
@@ -18,7 +18,9 @@ FILES = main.c \
 		verif.c \
 		verif_annexe.c \
 		fillit.c \
-		algo.c
+		fillit_annexe.c \
+		algo.c \
+		algo_init.c
 
 HFILES = serge.h \
 		 structure.h
